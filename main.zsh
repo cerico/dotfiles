@@ -2,9 +2,13 @@ export MARKPATH=$HOME/.marks
 alias sedi='sed -i "" -e'
 
 command_not_found_handler () {
-  if [ -f Makefile ] && grep "^$1:" Makefile > /dev/null; then
+  if [ -f Makefile ] && grep -q "^$1:" Makefile; then
     local rule=$(echo $1 | awk -F ":" '{print $1}')
     make $rule
+    return 0
+  fi
+  if [[ -f package.json ]] && jq .scripts package.json | grep -q "\"$1\":"; then
+    npm run $1
     return 0
   fi
   echo "zsh: command not found: $1"
