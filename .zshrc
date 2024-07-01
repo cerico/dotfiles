@@ -19,5 +19,5 @@ for file in $HOME/.zsh/*.zsh; do
     source $file
   fi
 done
-export PATH="/Users/brew/Library/Python/3.11/bin:$PATH"
+export PATH="/.pyvenv-ansible/bin:$PATH"
 source $HOME/.zsh/rails.zsh
