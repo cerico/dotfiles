@@ -75,8 +75,8 @@ _setupgit () {
 
 _cssjs () {
   local file="${1:-index.html}"
-  echo -e ".container {\n  background: currentColor;\n}" > styles.css
-  echo -e "document.addEventListener('DOMContentLoaded', function() {\n  console.log('Document ready!');\n});" > script.js
+  echo -e ".container {\n    background: currentColor;\n}" > styles.css
+  echo -e "document.addEventListener('DOMContentLoaded', function() {\n    console.log('Document ready!');\n});" > script.js
   sed -i '' '/<\/head>/i\
 <link rel="stylesheet" type="text/css" href="styles.css">
 ' $file
