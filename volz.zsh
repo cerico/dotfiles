@@ -9,7 +9,7 @@ scaffolds=(
   [tldr]=_list_scaffolds
 	)
 
-volz () { # scaffold application # ➜ volz rails busmap
+vvolz () { # scaffold application # ➜ volz rails busmap
   local option="${1:-tldr}"
   [[ ! $scaffolds[$1] ]] && option=tldr
   $scaffolds[$option] "${@:2}"
@@ -67,7 +67,7 @@ _list_scaffolds () {
 
 _setupgit () {
   mkdir -p .github/workflows
-  cp ~/.zsh/templates/github-actions/release.yml .github/workflows
+  cp ~/.templates/github-actions/release.yml .github/workflows
   git init
   git add .
   git commit -m "feat: initialized repo"
@@ -92,7 +92,7 @@ _html () {
     return
   fi
   mkdir $1 && cd $1
-  cp ~/.zsh/templates/html index.html
+  cp ~/.templates/html index.html
   _cssjs
   _setupgit
 }
@@ -120,3 +120,8 @@ _solid () {
   yarn
   _setupgit
 }
+volz () {
+  volzloc=/Users/brew/Work/live/volz
+  make -f $volzloc/Makefile $1 -C $volzloc CURDIR=$(pwd)
+}
+
